@@ -1,6 +1,6 @@
 $(function() {
   var self = this;
-  navigator.geolocation.watchPosition((position) => {
+  navigator.geolocation.watchPosition(function(position) {
     var lat = position.coords.latitude;
     var lon = position.coords.longitude;
 
