@@ -21,6 +21,6 @@ $(function() {
       steps += Math.abs(latDiff);
     }
 
-    $("#steps").text(steps);
+    $("#steps").text(latFeet + ' ' + lonFeet);
   })
 });
