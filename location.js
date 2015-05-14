@@ -14,6 +14,9 @@ $(function() {
     var latFeet = Math.abs(Math.round(latKm * 3280.4));
     var lonFeet = Math.abs(Math.round(lonKm * 3280.4));
 
+    currentLon = lonFeet;
+    currentLat = latFeet;
+
     var lonDiff = currentLon - lonFeet;
     var latDiff = currentLat - latFeet;
     
