@@ -22,14 +22,14 @@ $(function() {
         steps += Math.abs(lonDiff);
       }
 
-      if (Math.abs(latDiff) > 0 && Math.abs(latDiff) < 200) {
-        steps += Math.abs(latDiff);
-      }
+      // if (Math.abs(latDiff) > 0 && Math.abs(latDiff) < 200) {
+      //   steps += Math.abs(latDiff);
+      // }
     }
-    
+
     currentLon = lonFeet;
     currentLat = latFeet;
 
-    $("#steps").text(steps + ' ' + currentLon + ' ' + currentLat);
+    $("#steps").text(steps);
   })
 });
