@@ -28,6 +28,6 @@ $(function() {
       steps += Math.abs(latDiff);
     }
 
-    $("#steps").text(steps);
+    $("#steps").text(steps + ' ' + currentLon + ' ' + currentLat);
   })
 });
