@@ -48,7 +48,8 @@ $(function() {
     if (currentLat != null && currentLon != null) {
       var latStep = Math.abs(currentLat - latFeet);
       var lonStep = Math.abs(currentLon - lonFeet);
-      step = step + latStep + lonStep;
+      var newStep = Math.round(latStep + lonStep);
+      step += newStep;
     } else {
       currentLat = latFeet;
       currentLon = lonFeet;
@@ -64,8 +65,9 @@ $(function() {
     }
   };
 
-  navigator.geolocation.watchPosition(success ,error,
-  { maximumAge: 0, timeout: 5000, enableHighAccuracy: true } );
+  setInterval(function() {
+    navigator.geolocation.getCurrentPosition(success ,error, { maximumAge: 0, timeout: 5000, enableHighAccuracy: true } );
+  }, 1000);
 
 });
 
