@@ -35,27 +35,23 @@ $(function() {
   var currentLon;
   var currentLat;
 
+
+
   var success = function (position) {
     var lat = position.coords.latitude;
     var lon = position.coords.longitude;
 
-    var latKm = lat * (10000/90);
-    var lonKm = lon * (10000/90);
-
-    var latFeet = Math.abs(latKm * 3280.4);
-    var lonFeet = Math.abs(lonKm * 3280.4);
-
     if (currentLat != null && currentLon != null) {
-      var latStep = Math.abs(currentLat - latFeet);
-      var lonStep = Math.abs(currentLon - lonFeet);
-      var newStep = Math.round(latStep + lonStep);
-      steps += newStep;
+      var newStep = calculateDistance(currentLat, currentLon, lat, lon);
+      steps += newStep; 
+      currentLat = lat;
+      currentLon = lon;     
     } else {
-      currentLat = latFeet;
-      currentLon = lonFeet;
+      currentLat = lat;
+      currentLon = lon;
     }
-    console.log("updated")
-    $("#steps").text("Steps - " + steps + " | " + lat + ", " + lon);  
+
+    $("#steps").text("Steps: " + steps + " | Lat: " + lat + ", Lon: " + lon);  
   };
 
   var error = function (error) {
@@ -71,3 +67,18 @@ $(function() {
 
 });
 
+Number.prototype.toRad = function() {
+  return this * Math.PI / 180;
+}
+
+function calculateDistance(lat1, lon1, lat2, lon2) {
+  var R = 6371; // km
+  var dLat = (lat2 - lat1).toRad();
+  var dLon = (lon2 - lon1).toRad(); 
+  var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+          Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) * 
+          Math.sin(dLon / 2) * Math.sin(dLon / 2); 
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)); 
+  var d = R * c;
+  return d;
+}
