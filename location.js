@@ -35,8 +35,6 @@ $(function() {
   var currentLon;
   var currentLat;
 
-
-
   var success = function (position) {
     var lat = position.coords.latitude;
     var lon = position.coords.longitude;
