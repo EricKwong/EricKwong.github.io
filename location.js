@@ -32,13 +32,24 @@ $(function() {
 
   //   $("#steps").text(lat + ", " + lon);
   // })
+  var options = {
+      enableHighAccuracy: false,
+      timeout: 5000,
+      maximumAge: 0
+  };
+
+  var error = function(err) {
+    console.warn('ERROR(' + err.code + '): ' + err.message);
+  }
+
   var locate = function() {
+
     navigator.geolocation.getCurrentPosition(function(position) {
       var lat = position.coords.latitude;
       var lon = position.coords.longitude;
 
       $("#steps").text(lat + ', ' + lon);
-    });
+    }, error, options);
   };
   setInterval(locate, 1000);
-});
+});]
