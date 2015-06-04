@@ -54,7 +54,7 @@ $(function() {
       currentLon = lonFeet;
     }
 
-    $("#steps").text(steps);  
+    $("#steps").text("Steps - " + steps + " | " + lat + ", " + lon);  
   };
 
   var error = function (error) {
