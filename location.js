@@ -49,7 +49,7 @@ $(function() {
       var latStep = Math.abs(currentLat - latFeet);
       var lonStep = Math.abs(currentLon - lonFeet);
       var newStep = Math.round(latStep + lonStep);
-      step += newStep;
+      steps += newStep;
     } else {
       currentLat = latFeet;
       currentLon = lonFeet;
