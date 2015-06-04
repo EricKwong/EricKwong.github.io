@@ -33,9 +33,7 @@ $(function() {
   //   $("#steps").text(lat + ", " + lon);
   // })
   var options = {
-      enableHighAccuracy: false,
-      timeout: 5000,
-      maximumAge: 0
+      enableHighAccuracy: true
   };
 
   var error = function(err) {
