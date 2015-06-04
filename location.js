@@ -41,7 +41,7 @@ $(function() {
 
     if (currentLat != null && currentLon != null) {
       var newStep = calculateDistance(currentLat, currentLon, lat, lon);
-      steps += Math.round(Math.round(newStep * 3280.84) / 2) ; 
+      steps += Math.round(Math.round(newStep * 3280.84) / 3) ; 
       currentLat = lat;
       currentLon = lon;     
     } else {
