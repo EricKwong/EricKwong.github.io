@@ -32,22 +32,27 @@ $(function() {
 
   //   $("#steps").text(lat + ", " + lon);
   // })
-  var options = {
-      enableHighAccuracy: true
-  };
 
-  var error = function(err) {
-    console.warn('ERROR(' + err.code + '): ' + err.message);
+
+
+navigator.geolocation.watchPosition(success ,error,
+{ maximumAge: 0, timeout: 5000, enableHighAccuracy: true } );
+
+
+
+
+});
+
+var success = function (position) {
+  var lat = position.coords.latitude;
+  var lon = position.coords.longitude;
+
+  $("#steps").text(lat + ", " + lon);  
+};
+
+var error = function (error) {
+  if (error.code === PositionError.TIMEOUT) {
+    navigator.geolocation.getCurrentPosition(success, error,
+    { maximumAge: 3000, timeout: 20000, enableHighAccuracy: false } );
   }
-
-  // var locate = function() {
-
-    navigator.geolocation.watchPosition(function(position) {
-      var lat = position.coords.latitude;
-      var lon = position.coords.longitude;
-
-      $("#steps").text(lat + ', ' + lon);
-    }, error, options);
-  // };
-  // setInterval(locate, 1000);
-});]
+};
