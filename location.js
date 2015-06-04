@@ -65,9 +65,9 @@ $(function() {
     }
   };
 
-  setInterval(function() {
-    navigator.geolocation.getCurrentPosition(success ,error, { maximumAge: 0, timeout: 5000, enableHighAccuracy: true } );
-  }, 1000);
+  // setInterval(function() {
+    navigator.geolocation.watchPosition(success ,error, { maximumAge: 0, timeout: 5000, enableHighAccuracy: true } );
+  // }, 1000);
 
 });
 
