@@ -32,11 +32,13 @@ $(function() {
 
   //   $("#steps").text(lat + ", " + lon);
   // })
-  var locate = navigator.geolocation.getCurrentPosition(function(position) {
-    var lat = position.coords.latitude;
-    var lon = position.coords.longitude;
+  var locate = function() {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var lat = position.coords.latitude;
+      var lon = position.coords.longitude;
 
-    console.log(lat + ', ' + lon);
-  });
+      console.log(lat + ', ' + lon);
+    });
+  };
   setInterval(locate, 1000);
 });
