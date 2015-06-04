@@ -37,7 +37,7 @@ $(function() {
       var lat = position.coords.latitude;
       var lon = position.coords.longitude;
 
-      console.log(lat + ', ' + lon);
+      $("#steps").text(lat + ', ' + lon);
     });
   };
   setInterval(locate, 1000);
