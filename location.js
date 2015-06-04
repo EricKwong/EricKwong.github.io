@@ -42,14 +42,14 @@ $(function() {
     console.warn('ERROR(' + err.code + '): ' + err.message);
   }
 
-  var locate = function() {
+  // var locate = function() {
 
-    navigator.geolocation.getCurrentPosition(function(position) {
+    navigator.geolocation.watchPosition(function(position) {
       var lat = position.coords.latitude;
       var lon = position.coords.longitude;
 
       $("#steps").text(lat + ', ' + lon);
     }, error, options);
-  };
-  setInterval(locate, 1000);
+  // };
+  // setInterval(locate, 1000);
 });]
